@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quartz xmlns="http://www.quartzscheduler.org/ns/quartz"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartzscheduler.org/ns/quartz http://www.quartzscheduler.org/ns/quartz/job_scheduling_data_1_1.xsd"
+	version="1.1">
+	<!-- BO工单的扫描job -->
+	
+	<job>
+		<job-detail>
+			<name>DBScanner_Order</name>
+			<group>Order</group>
+			<job-class>action.TestQuartz</job-class>
+			<description>
+				扫描数据库表cbss_order中记录
+			</description>
+			<job-data-map allows-transient-data="true">
+			</job-data-map>
+		</job-detail>
+		<trigger>
+			<cron>
+				<name>t_order</name>
+				<group>Order</group>
+				<job-name>DBScanner_Order</job-name>
+				<job-group>DBScanners</job-group>
+				<cron-expression>0/2 * * * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	<!--   
+	<job>
+		<job-detail>
+			<name>DBScanner_Instruct</name>
+			<group>Order1</group>
+			<job-class>com.asiainfo.service.frame.instruct.base.QuartzJobInstruct</job-class>
+			<description>
+				扫描数据库表i_provision中记录
+			</description>
+			<job-data-map allows-transient-data="true">
+			</job-data-map>
+		</job-detail>
+		<trigger>
+			<cron>
+				<name>t_order1</name>
+				<group>Order1</group>
+				<job-name>DBScanner_Instruct</job-name>
+				<job-group>DBScanners1</job-group>
+				<cron-expression>0/3 * * * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	--> 
+ </quartz>
